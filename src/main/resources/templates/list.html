@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+</head>
+<body>
+<h2>게시판 목록</h2>
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>상세조회</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="article : ${article_list}">
+        <td th:text="${article.name}"></td>
+        <td th:text="${article.userid}"></td>
+        <td th:text="${article.createDate}"></td>
+        <td>
+            <a th:href="@{/article/{id}(id=${article.uuid})}">조회</a>
+        </td>
+        <td>
+            <a th:href="@{/article/delete/{id}(id=${article.uuid})}">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
